@@ -1,0 +1,20 @@
+{
+  "name": "codeflix",
+  "version": "1.0.0",
+  "description": "admin do catalogo de videos",
+  "main": "index.js",
+  "scripts": {
+    "ts-node": "ts-node",
+    "tsc": "if [ -f tsconfig.tsbuildinfo ]; then npm run clean:tsc && tsc; else tsc; fi",
+    "clean:tsc": "rm tsconfig.tsbuildinfo",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.3"
+  }
+}
