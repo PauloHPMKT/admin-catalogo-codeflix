@@ -137,3 +137,24 @@ Não há definição explicita de como criar as entities
 Normalmente utilzamos táticas do DDD
 Entities = Agregados + Domain Services
 useCase pode varia com o fluxo / entity tem suas regra solidificadas
+
+Exemplo de teste:
+import { Category } from "./Category"
+
+describe('Category Entity unit tests', () => {
+  it('should test Category Entity constructor', () => {
+    const created_at = new Date();
+    const category = new Category({ 
+      name: "Movies",
+      description: "Some description",
+      is_active: true,
+      created_at
+    });
+
+    
+    expect(category['props'].name).toBe('Movies')
+    expect(category['props'].description).toBe('Some description')
+    expect(category['props'].is_active).toBeTruthy()
+    expect(category['props'].created_at).toBe(created_at)
+  })
+})
