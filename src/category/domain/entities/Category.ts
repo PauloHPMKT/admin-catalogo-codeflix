@@ -6,7 +6,11 @@ export interface CategoryProps {
 }
 
 export class Category {
-  constructor(private readonly props: CategoryProps) {}
+  constructor(private readonly props: CategoryProps) {
+    this.description = this.props.description;
+    this.is_active = this.props.is_active;
+    this.props.created_at = this.props.created_at ?? new Date();
+  }
 
   get name() {
     return this.props.name;
@@ -22,5 +26,13 @@ export class Category {
 
   get created_at() {
     return this.props.created_at;
+  }
+
+  private set description(description: string) {
+    this.props.description = description ?? null;
+  }
+
+  private set is_active(value: boolean) {
+    this.props.is_active = value ?? true;
   }
 }
