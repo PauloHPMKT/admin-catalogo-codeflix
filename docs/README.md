@@ -20,7 +20,10 @@ Linguagem Ubiqua -> é uma linguagem descritiva sobre as representações repass
 Livre-se do FDD (Desenvolvimento orientado a framework)
 Expressividade é o mesmo que regra de negocios
 Padrão de pastas @seedwork representa uma pasta onde são criados objetos de valores, ou seja recursos que podem ser compartilhados entre os outros modulos da aplicação em uma especie de shared. A nomenclatura "@" diz que essa pasta sempre aparecerá na primeira posição no ordenamento de pastas.
+
+O que é um objeto de valor?
 Objeto de valor nao possui identidade própria.
+
 Informações do diagrama de caso de uso:
 Admin:
 Criar categoria
@@ -65,6 +68,9 @@ Key Option Open
 
 Criar limites arquiteturais muito claros acaba por criar partes que não dependam diretamente uma da outr além de nos permitir postergar decisões.
 Pontos importantes sobre arquitetura:
+
+Limites parciais:
+É a maneira de pensar aplicando um conceito que visa romper os limites arquiteturais como forma de não tornar a arquitetura tão purista em detrimento de manter a aplicação como a gente precisa com o objetivo de baixar o custo de desenvolvimento. Nesse contexto para criar um id (identificador da entidade) precisamos fazer que a nossa entidade dependa de um recurso externo para auxiliar na sua modelagem e implementação das suas regras crusciais de negócios.
 
 Formato que o Software terá - Ligado ao design de software
 Divisão de componentes - Pensar a nível de arquitetura quais componentes ele terá
@@ -158,3 +164,9 @@ describe('Category Entity unit tests', () => {
     expect(category['props'].created_at).toBe(created_at)
   })
 })
+
+
+Sobre identificadores em Entidades:
+Mais focado em DDD uma identidade precisa ter um identificador que cria os nossos
+comportamentos e atributos. Essa identidade tem que ser independente de qualquer 
+amarra ou dependencia de recursos externos.
