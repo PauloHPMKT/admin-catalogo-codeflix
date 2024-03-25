@@ -21,8 +21,23 @@ Livre-se do FDD (Desenvolvimento orientado a framework)
 Expressividade é o mesmo que regra de negocios
 Padrão de pastas @seedwork representa uma pasta onde são criados objetos de valores, ou seja recursos que podem ser compartilhados entre os outros modulos da aplicação em uma especie de shared. A nomenclatura "@" diz que essa pasta sempre aparecerá na primeira posição no ordenamento de pastas.
 
-O que é um objeto de valor?
-Objeto de valor nao possui identidade própria.
+O que é um objeto de valor? (Especifico do DDD)
+Objeto de valor nao possui identidade própria. Imagine que vamos gerenciar esse id entre outras entidades do projeto estariamos replicando o codigo da primeira implementação:
+"export class Category {
+  public readonly id: string;
+  constructor(private readonly props: CategoryProps, id?: string) {
+    this.id = id || uuidv4();
+..."
+Digamos que a gente receba um id que seja invalido? Caso a gente deixe esse recurso solto, podemos replicar seus comportamentos nas outras entidades, e se houvermos algum percalço com a biblioteca que estamos usando para gerar o id? No fim teremos que ir em todos os lugares onde essa implementação está feita para corrigir seu comportamento. Isso pode ser bastante custoso. Isso ocorre pois estamos lhe dando com esse id de forma escalar utilizando recursos da propria linguagem, porém sua representação é totalmente singular, Ex: o seu valor é do tipo string, porém podemos criar um tipo especifico para esse valor visto que ele trabalha com a manipulação de uuids e isso poderia ser um tipo totalmente distindo em nossa aplicação. Então para que a gente possa resolver viasndo modelar nossa entidade?
+
+Entidade é um conjunto de atributos e objetos de valores e também com uma identidade + comportamento.
+
+Então objeto de valor nada mais é que um valor que estamos tratando dentro da entidade, porem com algumas caracteristicas diferentes de um valor convencional da linguagem, pois conseguimos validar seu valor dentro do objeto de valor, ele é imutável, pode conter varias propriedades.
+
+Definição do livro do Eric Evans:
+Imagina uma criança desenhando e ela usa um lapis azul, ai aconteceu do lapis quebrar a ponta e voce teve que pegar um lapis azul de uma outra caixa, a criança não se importa. Ou seja, o lapis da cor azul representa um objeto de valor, pois da mesma forma do lapis ele pode ser substituido por outro lapis da mesma cor, isso mantendo sua caracteristica de uma cor unica.
+
+No resumo, objeto de valor contem dados e caracteristicas que medem, quantificam ou descrevem algo em uma entidade de dominio e que podem ter seus comportamentos compartilhados entre outras entidades.
 
 Informações do diagrama de caso de uso:
 Admin:
