@@ -23,4 +23,9 @@ describe('Category Entity unit tests', () => {
       is_active: true,
     })
   })
+
+  it('should check if created_at is a Date', () => {
+    const sut = makeSut();
+    expect(sut.created_at).toBeInstanceOf(Date);
+  })
 })
