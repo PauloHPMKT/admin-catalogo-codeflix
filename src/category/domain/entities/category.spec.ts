@@ -51,9 +51,20 @@ describe('Category Entity unit tests', () => {
     const sut = makeSut();
     sut['props'].description = "Movies category";
 
+    // toMatchObject verifica se os objetos são iguais, sem se importar com a ordem das propriedades
     expect(sut['props']).toMatchObject({
       name: "Movies",
       description: "Movies category",
+    });
+  })
+
+  it('should create a category with name and is_active', () => {
+    const sut = makeSut();
+    sut['props'].is_active = true;
+
+    expect(sut['props']).toMatchObject({
+      name: "Movies",
+      is_active: true,
     });
   })
 })
