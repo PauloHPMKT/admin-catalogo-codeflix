@@ -1,4 +1,5 @@
 import { omit } from "lodash";
+import { validate as uuidValidate, validate } from 'uuid';
 import { Category } from "./Category";
 
 const makeSut = () => {
@@ -77,6 +78,13 @@ describe('Category Entity constructor unit tests', () => {
       name: "Movies",
       created_at,
     })
+  })
+
+  it('should test id field', () => {
+    const sut = makeSut();
+    expect(sut.id).toBeDefined();
+    expect(sut.id).not.toBeNull();
+    expect(uuidValidate(sut.id)).toBeTruthy();
   })
 })
 
