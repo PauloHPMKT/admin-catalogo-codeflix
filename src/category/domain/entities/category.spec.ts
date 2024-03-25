@@ -6,7 +6,7 @@ const makeSut = () => {
   return sut;
 }
 
-describe('Category Entity unit tests', () => {
+describe('Category Entity constructor unit tests', () => {
   it('should test a instance of Category Entity', () => {
     const sut = makeSut();
     expect(sut).toBeDefined();
@@ -67,4 +67,16 @@ describe('Category Entity unit tests', () => {
       is_active: true,
     });
   })
+
+  it('should create a category with created_at', () => {
+    const sut = makeSut();
+    let created_at = new Date();
+    sut['props'].created_at = created_at;
+
+    expect(sut['props']).toMatchObject({
+      name: "Movies",
+      created_at,
+    })
+  })
 })
+
