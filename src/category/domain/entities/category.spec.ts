@@ -28,4 +28,22 @@ describe('Category Entity unit tests', () => {
     const sut = makeSut();
     expect(sut.created_at).toBeInstanceOf(Date);
   })
+
+  it('should create a Category with all data', () => {
+    const sut = makeSut();
+    let created_at = new Date();
+
+    sut['props'].description = "Movies category",
+    sut['props'].is_active = false,
+    sut['props'].created_at = created_at;
+
+    const category = {
+      name: "Movies",
+      description: "Movies category",
+      is_active: false,
+      created_at
+    }
+
+    expect(sut['props']).toStrictEqual(category)
+  })
 })
