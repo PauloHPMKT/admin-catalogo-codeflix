@@ -2,8 +2,8 @@ import { omit } from "lodash";
 import { validate as uuidValidate, validate } from 'uuid';
 import { Category } from "./Category";
 
-const makeSut = () => {
-  const sut = new Category({ name: "Movies" });
+const makeSut = (id?: string) => {
+  const sut = new Category({ name: "Movies" }, id);
   return sut;
 }
 
@@ -80,9 +80,21 @@ describe('Category Entity constructor unit tests', () => {
     })
   })
 
-  it('should test id field', () => {
-    const sut = makeSut();
-    expect(sut.id).toBeDefined();
+  it('should test id is generated even null', () => {
+    const sut = makeSut(null);
+    expect(sut.id).not.toBeNull();
+    expect(uuidValidate(sut.id)).toBeTruthy();
+  })
+
+  it('should test id is generated even undefined', () => {
+    const sut = makeSut(undefined);
+    expect(sut.id).not.toBeNull();
+    expect(uuidValidate(sut.id)).toBeTruthy();
+  })
+
+  it('should test a valid uuid', () => {
+    const id = 'f394ac59-9f52-4961-8720-29937ae62da1'
+    const sut = makeSut(id);
     expect(sut.id).not.toBeNull();
     expect(uuidValidate(sut.id)).toBeTruthy();
   })
