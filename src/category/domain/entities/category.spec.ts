@@ -46,4 +46,14 @@ describe('Category Entity unit tests', () => {
 
     expect(sut['props']).toStrictEqual(category)
   })
+
+  it('should create a category with name and description', () => {
+    const sut = makeSut();
+    sut['props'].description = "Movies category";
+
+    expect(sut['props']).toMatchObject({
+      name: "Movies",
+      description: "Movies category",
+    });
+  })
 })
