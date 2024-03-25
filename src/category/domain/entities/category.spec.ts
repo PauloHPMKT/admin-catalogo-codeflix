@@ -1,3 +1,4 @@
+import { omit } from "lodash";
 import { Category } from "./Category";
 
 const makeSut = () => {
@@ -12,19 +13,14 @@ describe('Category Entity unit tests', () => {
     expect(sut).toBeInstanceOf(Category);
   })
 
-  it('should test Category Entity constructor', () => {
-    const created_at = new Date();
-    const category = new Category({ 
+  it('should create a Category by name', () => {
+    const sut = makeSut();
+    const props = omit(sut['props'], 'created_at');
+
+    expect(props).toStrictEqual({
       name: "Movies",
-      description: "Some description",
+      description: null,
       is_active: true,
-      created_at
-    });
-    expect(category['props']).toStrictEqual({
-      name: "Movies",
-      description: "Some description",
-      is_active: true,
-      created_at
     })
   })
 })
